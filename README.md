@@ -1,10 +1,10 @@
 # cache2go
 
-[![Latest Release](https://img.shields.io/github/release/muesli/cache2go.svg)](https://github.com/muesli/cache2go/releases)
-[![Build Status](https://github.com/muesli/cache2go/workflows/build/badge.svg)](https://github.com/muesli/cache2go/actions)
-[![Coverage Status](https://coveralls.io/repos/github/muesli/cache2go/badge.svg?branch=master)](https://coveralls.io/github/muesli/cache2go?branch=master)
-[![Go ReportCard](https://goreportcard.com/badge/muesli/cache2go)](https://goreportcard.com/report/muesli/cache2go)
-[![GoDoc](https://godoc.org/github.com/golang/gddo?status.svg)](https://pkg.go.dev/github.com/muesli/cache2go)
+`forked from muesli/cache2go`
+
+并发安全的多表缓存库. 支持过期检查, 访问计数, 回调函数.
+
+无修改, 打包方便使用.
 
 Concurrency-safe golang caching library with expiration capabilities.
 
@@ -15,11 +15,11 @@ See the [install instructions](https://golang.org/doc/install.html).
 
 To install cache2go, simply run:
 
-    go get github.com/muesli/cache2go
+    go get github.com/fufuok/cache2go
 
 To compile it from source:
 
-    cd $GOPATH/src/github.com/muesli/cache2go
+    cd $GOPATH/src/github.com/fufuok/cache2go
     go get -u -v
     go build && go test -v
 
@@ -28,7 +28,7 @@ To compile it from source:
 package main
 
 import (
-	"github.com/muesli/cache2go"
+	"github.com/fufuok/cache2go"
 	"fmt"
 	"time"
 )
@@ -83,5 +83,5 @@ To run this example, go to examples/mycachedapp/ and run:
 
     go run mycachedapp.go
 
-You can find a [few more examples here](https://github.com/muesli/cache2go/tree/master/examples).
+You can find a [few more examples here](https://github.com/fufuok/cache2go/tree/master/examples).
 Also see our test-cases in cache_test.go for further working examples.

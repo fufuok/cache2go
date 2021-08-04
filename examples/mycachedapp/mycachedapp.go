@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/muesli/cache2go"
+	"github.com/fufuok/cache2go"
 )
 
 // Keys & values in cache2go can be of arbitrary types, e.g. a struct.

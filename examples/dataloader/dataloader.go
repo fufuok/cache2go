@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/muesli/cache2go"
 	"strconv"
+
+	"github.com/fufuok/cache2go"
 )
 
 func main() {
