@@ -40,3 +40,29 @@ func Cache(table string) *CacheTable {
 
 	return t
 }
+
+// Count returns how many cache table.
+func Count() int {
+	mutex.RLock()
+	defer mutex.RUnlock()
+	return len(cache)
+}
+
+// Delete an cache table.
+func Delete(table string) {
+	mutex.RLock()
+	defer mutex.RUnlock()
+
+	if t, ok := cache[table]; ok {
+		t.Lock()
+		defer t.Unlock()
+
+		t.items = nil
+		t.cleanupInterval = 0
+		if t.cleanupTimer != nil {
+			t.cleanupTimer.Stop()
+		}
+
+		delete(cache, table)
+	}
+}

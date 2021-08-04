@@ -76,7 +76,7 @@ func (table *CacheTable) SetAddedItemCallback(f func(*CacheItem)) {
 	table.addedItem = append(table.addedItem, f)
 }
 
-//AddAddedItemCallback appends a new callback to the addedItem queue
+// AddAddedItemCallback appends a new callback to the addedItem queue
 func (table *CacheTable) AddAddedItemCallback(f func(*CacheItem)) {
 	table.Lock()
 	defer table.Unlock()
@@ -150,7 +150,7 @@ func (table *CacheTable) expirationCheck() {
 		}
 		if now.Sub(accessedOn) >= lifeSpan {
 			// Item has excessed its lifespan.
-			table.deleteInternal(key)
+			_, _ = table.deleteInternal(key)
 		} else {
 			// Find the item chronologically closest to its end-of-lifespan.
 			if smallestDuration == 0 || lifeSpan-now.Sub(accessedOn) < smallestDuration {
@@ -315,6 +315,11 @@ func (table *CacheTable) Flush() {
 	if table.cleanupTimer != nil {
 		table.cleanupTimer.Stop()
 	}
+}
+
+// Release this cache table.
+func (table *CacheTable) Release() {
+	Delete(table.name)
 }
 
 // CacheItemPair maps key to access counter

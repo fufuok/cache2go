@@ -46,8 +46,21 @@ func main() {
 	})
 
 	// Remove the item from the cache.
-	cache.Delete("someKey")
+	_, _ = cache.Delete("someKey")
 
 	// And wipe the entire cache table.
 	cache.Flush()
+
+	// 1 cache table
+	fmt.Println(cache2go.Count())
+
+	// Both are equivalent
+	// cache2go.Delete("myCache")
+	cache.Release()
+
+	// 0 cache table
+	fmt.Println(cache2go.Count())
+
+	// panic: assignment to entry in nil map
+	// cache.Add("k", 0, "v")
 }

@@ -4,7 +4,9 @@
 
 并发安全的多表缓存库. 支持过期检查, 访问计数, 回调函数.
 
-无修改, 打包方便使用.
+改动:
+
+- 增加缓存表统计和删除.
 
 Concurrency-safe golang caching library with expiration capabilities.
 

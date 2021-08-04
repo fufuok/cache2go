@@ -472,3 +472,31 @@ func TestLogger(t *testing.T) {
 		t.Error("Logger is empty")
 	}
 }
+
+func TestCountAndDelete(t *testing.T) {
+	n := Count()
+
+	for i := 0; i < 100; i++ {
+		table := Cache("test_" + strconv.Itoa(i))
+		table.Add(i, 0, i)
+
+		if i < 10 {
+			// call cache2go.Delete(table.name)
+			table.Release()
+		}
+	}
+
+	count := Count()
+	if count != n+90 {
+		t.Errorf("Error verifying count of cache table: %d", count)
+	}
+
+	for i := 0; i < 50; i++ {
+		Delete("test_" + strconv.Itoa(i))
+	}
+
+	count = Count()
+	if count != n+50 {
+		t.Errorf("Error verifying count of cache table: %d", count)
+	}
+}
