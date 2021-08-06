@@ -50,8 +50,8 @@ func Count() int {
 
 // Delete an cache table.
 func Delete(table string) {
-	mutex.RLock()
-	defer mutex.RUnlock()
+	mutex.Lock()
+	defer mutex.Unlock()
 
 	if t, ok := cache[table]; ok {
 		t.Lock()
